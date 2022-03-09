@@ -13,15 +13,14 @@ document.addEventListener("DOMContentLoaded", () => {
 card.addEventListener("click", async (e) => {
   const btnDetail = e.target.classList.contains("btn-detail");
   const code = e.target.id;
-  console.log(code);
 
   if (btnDetail) {
     const list = await getCountries(`${endpoint}all`);
     const country = list.find(
-      (element) => element.cca2.toLocaleLowerCase() === code
+      (element) => element.cca2.toLocaleLowerCase() === code.toLocaleLowerCase()
     );
     localStorage.setItem("Country", JSON.stringify(country));
-    window.location.href = "details.html";
+    // window.location.href = "details.html";
   }
 });
 
@@ -33,10 +32,12 @@ inputSearch.addEventListener("keyup", async () => {
   if (searchValue.length > 0) {
     const countries = await getCountries(`${endpoint}all`);
     let searchResult = countries.filter((country) =>
-      country.name.official.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
+      country.name.official
+        .toLocaleLowerCase()
+        .includes(searchValue.toLocaleLowerCase())
     );
 
-    card.innerHTML = '';
+    card.innerHTML = "";
 
     showCountries(searchResult, card);
   }
@@ -44,8 +45,10 @@ inputSearch.addEventListener("keyup", async () => {
 
 const selectContainer = document.getElementById("selectContainer");
 selectContainer.addEventListener("change", async () => {
-    card.innerHTML = '';
-    let selectValue = selectContainer.value;
-    let selectedCountries = await getCountries(`${endpoint}region/${selectValue}`);
-    showCountries(selectedCountries, card);
-})
+  card.innerHTML = "";
+  let selectValue = selectContainer.value;
+  let selectedCountries = await getCountries(
+    `${endpoint}region/${selectValue}`
+  );
+  showCountries(selectedCountries, card);
+});

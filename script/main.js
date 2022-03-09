@@ -13,11 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
 card.addEventListener("click", async (e) => {
   const btnDetail = e.target.classList.contains("btn-detail");
   const code = e.target.id;
+  console.log(code);
 
   if (btnDetail) {
     const list = await getCountries(`${endpoint}all`);
     const country = list.find(
-      (element) => element.alpha2Code.toLocaleLowerCase === code
+      (element) => element.cca2.toLocaleLowerCase() === code
     );
     localStorage.setItem("Country", JSON.stringify(country));
     window.location.href = "details.html";

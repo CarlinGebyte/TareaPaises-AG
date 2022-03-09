@@ -20,7 +20,7 @@ card.addEventListener("click", async (e) => {
       (element) => element.cca2.toLocaleLowerCase() === code.toLocaleLowerCase()
     );
     localStorage.setItem("Country", JSON.stringify(country));
-    // window.location.href = "details.html";
+    window.location.href = "details.html";
   }
 });
 

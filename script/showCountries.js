@@ -6,8 +6,7 @@ export const showCountries = async (arrayCountries, cards) => {
       <div class="card">
         <div class="card-body" >
         <img src=${flags.png} class="card-img-top" alt="...">
-          <h5 class="card-title">${name}</h5>
-          <p>País: ${name}</p>
+          <h5 class="card-title">${name.official}</h5>
           <p>Región: ${region}</p>
           <p>Población: ${population}</p>
           <p>Capital: ${capital}</p>

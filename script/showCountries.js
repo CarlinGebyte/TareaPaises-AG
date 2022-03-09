@@ -1,6 +1,6 @@
 export const showCountries = async (arrayCountries, cards) => {
   let countries = await arrayCountries;
-  countries = countries.slice(0,29);
+  countries = countries.slice(0,28);
 //   let count = 0;
   countries.forEach((country) => {
     // if (count < 15) {

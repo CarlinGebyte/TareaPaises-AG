@@ -6,7 +6,7 @@ const endpoint = "https://restcountries.com/v3.1/";
 const card = document.getElementById("cards");
 
 document.addEventListener("DOMContentLoaded", () => {
-  const countries = getCountries(endpoint);
+  const countries = getCountries(`${endpoint}all`);
   showCountries(countries, card);
 });
 
@@ -15,11 +15,25 @@ card.addEventListener("click", async (e) => {
   const code = e.target.id;
 
   if (btnDetail) {
-    const list = await getCountries(endpoint);
+    const list = await getCountries(`${endpoint}all`);
     const country = list.find(
       (element) => element.alpha2Code.toLocaleLowerCase === code
     );
     localStorage.setItem("Country", JSON.stringify(country));
     window.location.href = "details.html";
+  }
+});
+
+const inputSearch = document.getElementById("inputBusqueda");
+
+inputSearch.addEventListener("keyup", async () => {
+  let searchValue = inputSearch.value;
+  if (searchValue.length > 0) {
+    const countries = await getCountries(`${endpoint}all`);
+    let searchResult = countries.filter((country) =>
+      country.name.toLocaleLowerCase.includes(searchValue.toLocaleLowerCase)
+    );
+
+    showCountries(searchResult, card);
   }
 });

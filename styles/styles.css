@@ -22,6 +22,9 @@ body {
 body.light .navContainer {
   background-color: white;
 }
+body.dark {
+  color: #fff;
+}
 body.dark .navContainer {
   background-color: #2b3945;
 }
@@ -73,13 +76,26 @@ body.dark .containerBusqueda {
 }
 
 .bodyContainer {
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.bodyContainer .cardsContainer {
+  padding: 0 1em;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
 }
 body.light .bodyContainer {
   background-color: #fafafa;
 }
 body.dark .bodyContainer {
   background-color: #202c37;
+}
+
+.card {
+  margin: 2%;
+  width: 20em;
 }
 
 .containerBusqueda input {

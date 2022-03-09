@@ -1,5 +1,5 @@
-import getCountries from "./getCountries";
-import { showCountries } from "./showCountries";
+import getCountries from "../script/getCountries.js";
+import { showCountries } from "../script/showCountries.js";
 
 const endpoint = "https://restcountries.com/v3.1/";
 
@@ -28,12 +28,23 @@ const inputSearch = document.getElementById("inputBusqueda");
 
 inputSearch.addEventListener("keyup", async () => {
   let searchValue = inputSearch.value;
+  console.log(searchValue);
   if (searchValue.length > 0) {
     const countries = await getCountries(`${endpoint}all`);
     let searchResult = countries.filter((country) =>
-      country.name.toLocaleLowerCase.includes(searchValue.toLocaleLowerCase)
+      country.name.official.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
     );
+
+    card.innerHTML = '';
 
     showCountries(searchResult, card);
   }
 });
+
+const selectContainer = document.getElementById("selectContainer");
+selectContainer.addEventListener("change", async () => {
+    card.innerHTML = '';
+    let selectValue = selectContainer.value;
+    let selectedCountries = await getCountries(`${endpoint}region/${selectValue}`);
+    showCountries(selectedCountries, card);
+})

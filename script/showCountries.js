@@ -1,8 +1,12 @@
 export const showCountries = async (arrayCountries, cards) => {
-  const countries = await arrayCountries;
+  let countries = await arrayCountries;
+  countries = countries.slice(0,29);
+//   let count = 0;
   countries.forEach((country) => {
-    const { cca2, flags, name, region, population, capital } = country;
-    cards.innerHTML += `
+    // if (count < 15) {
+      const { cca2, flags, name, region, population, capital } = country;
+    //   count++;
+      cards.innerHTML += `
       <div class="card">
         <div class="card-body" >
         <img src=${flags.png} class="card-img-top" alt="...">
@@ -14,5 +18,9 @@ export const showCountries = async (arrayCountries, cards) => {
         </div>
       </div>
     `;
+    // console.log(count);
+    // } else {
+        // return
+    // }
   });
 };

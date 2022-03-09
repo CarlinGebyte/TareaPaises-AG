@@ -2,7 +2,7 @@
 
 //DARKMODE
 //Dark Blue (Dark Mode Elements): 
-$elementes-dark:hsl(209, 23%, 22%);
+$elements-dark:hsl(209, 23%, 22%);
 //Very Dark Blue (Dark Mode Background): 
 $bg-dark: hsl(207, 26%, 17%);
 //White (Dark Mode Text & Light Mode Elements): 
@@ -15,7 +15,7 @@ $text-light:hsl(200, 15%, 8%);
 //Dark Gray (Light Mode Input): 
 $input-light:hsl(0, 0%, 52%);
 //Very Light Gray (Light Mode Background): 
-$bg-dark: hsl(0, 0%, 98%);
+$bg-light: hsl(0, 0%, 98%);
 
 
 
@@ -30,25 +30,42 @@ $bg-dark: hsl(0, 0%, 98%);
 
 //NAVBAR
 body{
-    border: 2px solid red;
     width: 100%;
 }
 .navBar{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    
 }
 .navContainer{
     width: 100%;
-    border: 2px solid green;
-    padding: 15px 0px;
+    padding: 20px 0px;
+    body.light &{
+        background-color: $text-dark; 
+    }
+    body.dark &{
+        background-color: $elements-dark;
+    }
+    
 }
 .navBar h1{
-    border: 2px solid red;
     margin-left: 80px;
+    body.light &{
+        color: $text-light;
+    }
+    body.dark &{
+        color: $text-dark;
+    }
 }
 .themeContainer{
-    border: 2px solid yellow;
     margin-right: 80px;
+    body.light &{
+        color: $text-light;
+    }
+    body.dark &{
+        color: $text-dark;
+    }
 }
 
 
@@ -56,17 +73,19 @@ body{
 .containerBusqueda{
     display: flex;
     justify-content: space-between;
-    border: 2px solid black;
     padding: 45px 0px;
+    body.light &{
+        background-color: $bg-light;
+    }
+    body.dark &{
+        background-color: $bg-dark;
+    }
 }
 #inputBusqueda{
-    border: 2px solid red;
     margin-left: 80px;
 }
 #selectContainer{
-    border: 2px solid red;
-    margin-right: 80px;
-
+    margin-right: 80px; 
     max-width: 250px;
 	position: relative;
 }
@@ -75,23 +94,64 @@ body{
 }
 
 .bodyContainer{
-    background-color: blueviolet;
     height: 100vh;
+    body.light &{
+        background-color: $bg-light;
+    }
+    body.dark &{
+        background-color: $bg-dark;
+    }
 }
 .containerBusqueda input{
     width: 30%;
     height: 50px;
+    border: none;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 94px 1px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 0px 94px 1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 94px 1px rgba(0,0,0,0.2);
+    body.light &{
+        background-color: $text-dark; 
+    }
+    body.dark &{
+        background-color: $elements-dark;
+    }
+}
+::placeholder{
+    body.light &{
+        color: $text-light; 
+    }
+    body.dark &{
+        color: $text-dark;
+    }
+}
+input[type="text"] {
+    padding: 10px 20px;
 }
 .containerBusqueda select{
     width: 15%;
     height: 50px;
     display: inline-block;
 	cursor: pointer;
-  	padding: 7px 10px;
+    padding: 7px 10px;
 	background: #f0f0f0;
 	color: #7b7b7b;
 	font-size: 1em;
 	color: #999;
     position: relative;
     transition: all 0.25s ease;
+    border: none;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 94px 1px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 0px 94px 1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 94px 1px rgba(0,0,0,0.2);
+
+    body.light &{
+        background-color: $text-dark; 
+        color: $text-light;
+    }
+    body.dark &{
+        background-color: $elements-dark;
+        color: $text-dark;
+    }
 }
